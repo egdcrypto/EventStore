@@ -1,0 +1,77 @@
+trigger:
+  batch: true
+  paths:
+    include:
+    - EventStoreProcessor
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+- group: 'Secrets - EventStore'
+
+stages:
+- stage: Build
+  displayName: 'Build and Test'
+  jobs:
+  - job: build
+    continueOnError: false
+    steps:
+    - task: NuGetAuthenticate@1
+    - bash: dotnet restore EventStoreProcessor/src
+      displayName: "Restore Nuget Packages"
+    - bash: dotnet test EventStoreProcessor/Test -c Release --no-restore
+      displayName: "Test Project"
+    - bash: dotnet publish EventStoreProcessor/src -c Release --no-restore --output EventStoreProcessor/src/bin/Release/net6.0/publish/app_data/jobs/continuous/EventStoreProcessor
+      displayName: "Build Artifacts"
+    - task: ArchiveFiles@2
+      displayName: "Zipping Artifacts"
+      inputs:
+        rootFolderOrFile: 'EventStoreProcessor/src/bin/Release/net6.0/publish'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/src.zip'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Storing Build Artifacts'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+
+- stage: StartDev
+  dependsOn: Build
+  displayName: 'Spinning Up Dev'
+  variables:
+  - group: 'EventStore - Dev'
+  - name: mongo-db-connection
+    value: $(dev-mongodb-connection)
+  jobs:
+  - template: template/job-terraform.yml
+  - template: template/job-deploy.yml  
+  condition: ne(variables['Build.SourceBranch'], 'refs/heads/main')
+
+- stage: StartPreprod
+  dependsOn: Build
+  displayName: 'Spinning Up PreProd'
+  variables:
+  - group: 'EventStore - Preprod'
+  - group: 'Pipeline Gate'
+  - name: mongo-db-connection
+    value: $(preprod-mongodb-connection)
+  jobs:
+  - template: template/job-terraform.yml
+  - template: template/job-deploy.yml
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+
+- stage: StartProd
+  dependsOn: StartPreprod
+  displayName: 'Spinning Up Prod'
+  variables:
+  - group: 'EventStore - Prod'
+  - group: 'Pipeline Gate'
+  - name: mongo-db-connection
+    value: $(prod-mongodb-connection)
+  jobs:
+  - template: template/job-terraform.yml
+  - template: template/job-deploy.yml
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+ 

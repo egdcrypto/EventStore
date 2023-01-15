@@ -1,1 +1,1 @@
-# eventstore
+# EventStore

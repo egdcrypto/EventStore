@@ -1,0 +1,12 @@
+terraform plan \
+-var "app_name=eventstore" \
+-var "resource_group_location=eastus" \
+-var "env=dev" \
+-var "inf_env=dev" \
+-var "tfstate_resource_group_name=" \
+-var "tfstate_storage_account_name=" \
+-var "tfstate_container_name=tf-environments" \
+-var "databasename=EventStore" \
+-var "topicname=EventStore" \
+-var "mongo-db-connection=" \
+-var "service-bus-connection="

@@ -1,0 +1,25 @@
+jobs:
+- job: infrastructure
+  displayName: "Creating/Updating Infrastructure"
+  continueOnError: false
+  steps:  
+  - template: step-terraform-init.yml
+  - task: TerraformTaskV3@3
+    displayName: 'Terraform Apply'
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/EventStoreProcessor/infra'
+      environmentServiceNameAzureRM: ''
+      commandOptions: >-
+        -var "app_name=$(app_name)"
+        -var "resource_group_location=$(resource_group_location)"
+        -var "inf_env=$(inf_env)"
+        -var "env=$(env)"
+        -var "tfstate_resource_group_name=$(tfstate_resource_group_name)" 
+        -var "tfstate_storage_account_name=$(tfstate_storage_account_name)" 
+        -var "tfstate_container_name=$(tfstate_container_name)"  
+        -var "database_name=$(database_name)"
+        -var "mongo-db-connection=$(mongo-db-connection)"
+        -var "topic_name=$(topic_name)"         
+        -var "service-bus-connection=$(service-bus-connection)" 

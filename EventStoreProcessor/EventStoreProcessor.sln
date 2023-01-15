@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{100D3C46-A7E4-4CB6-BE5C-43671337C296}"
+	ProjectSection(SolutionItems) = preProject
+		infra\apply.sh = infra\apply.sh
+		infra\init.sh = infra\init.sh
+		infra\locals.tf = infra\locals.tf
+		infra\main.tf = infra\main.tf
+		infra\plan.sh = infra\plan.sh
+		infra\variables.tf = infra\variables.tf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pipeline", "pipeline", "{D24B5CCB-AF2B-4041-A53E-B2C7EE4F115D}"
+	ProjectSection(SolutionItems) = preProject
+		pipeline\azure-pipelines.yml = pipeline\azure-pipelines.yml
+		pipeline\destroy.yml = pipeline\destroy.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{48B97BC8-17A5-40C6-B237-0E7B4A6281F4}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{DA89BBCA-FCA5-47B4-BBDE-7FEA06A40681}"
+	ProjectSection(SolutionItems) = preProject
+		pipeline\template\job-deploy.yml = pipeline\template\job-deploy.yml
+		pipeline\template\job-terraform.yml = pipeline\template\job-terraform.yml
+		pipeline\template\step-terraform-init.yml = pipeline\template\step-terraform-init.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventStoreProcessor", "src\EventStoreProcessor.csproj", "{649B1CA1-B36B-4ED9-BDFA-9A83210A985E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventStoreProcessor.Test", "Test\EventStoreProcessor.Test.csproj", "{557CA404-C76F-492F-8292-66C2ACDEE8E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Command.Models", "..\Common\src\Models\Command.Models.csproj", "{2DBE2916-B29F-4E7D-AB17-F854B1F263D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{FF4A9311-7CE5-4AAD-A935-EECD30C741C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{649B1CA1-B36B-4ED9-BDFA-9A83210A985E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{649B1CA1-B36B-4ED9-BDFA-9A83210A985E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{649B1CA1-B36B-4ED9-BDFA-9A83210A985E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{649B1CA1-B36B-4ED9-BDFA-9A83210A985E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{557CA404-C76F-492F-8292-66C2ACDEE8E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{557CA404-C76F-492F-8292-66C2ACDEE8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{557CA404-C76F-492F-8292-66C2ACDEE8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{557CA404-C76F-492F-8292-66C2ACDEE8E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DBE2916-B29F-4E7D-AB17-F854B1F263D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DBE2916-B29F-4E7D-AB17-F854B1F263D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DBE2916-B29F-4E7D-AB17-F854B1F263D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DBE2916-B29F-4E7D-AB17-F854B1F263D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DA89BBCA-FCA5-47B4-BBDE-7FEA06A40681} = {D24B5CCB-AF2B-4041-A53E-B2C7EE4F115D}
+		{2DBE2916-B29F-4E7D-AB17-F854B1F263D5} = {FF4A9311-7CE5-4AAD-A935-EECD30C741C2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8053312A-BE18-4376-9DA7-91016044B0D5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+stages:
+- stage: destroy
+  displayName: 'Tear Down Infrastructure'
+  variables:
+  - group: 'App - EventStoreProcessor'
+  jobs:
+  - job: start
+    continueOnError: false
+    steps:
+    #- template: terraform-init.yml
+    - bash: |
+        cd infra;
+        terraform destroy \
+          -auto-approve \
+          -var "app_name=$(app_name)" \
+          -var "resource_group_location=$(resource_group_location)" \
+          -var "inf_env=$(inf_env)" \
+          -var "env=$(env)" \
+          -var "tfstate_resource_group_name=$(tfstate_resource_group_name)" \
+          -var "tfstate_storage_account_name=$(tfstate_storage_account_name)" \
+          -var "tfstate_container_name=$(tfstate_container_name)" \          
+          -var "service-bus-connection=$(service-bus-connection)" \
+          -var "mongo-db-connection=$(mongo-db-connection)" \
+          -var "topicname=$(topicname)" \
+          -var "databasename=$(databasename)" \
+          -var "key_vault_name=kv-tf-shared" \
+          -var "key_vault_rg_name="
+      displayName: 'Terraform Destroy'

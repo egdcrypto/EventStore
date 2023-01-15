@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-HubWorkerConsume-0E4C2219-55F7-404C-819C-9EE775822164</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\HubWorkerPublish</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.10" />
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="6.0.10" />
+	  <PackageReference Include="Microsoft.Azure.SignalR" Version="1.18.3" />
+	  
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\src\Models\Command.Models.csproj" />
+  </ItemGroup>
+</Project>

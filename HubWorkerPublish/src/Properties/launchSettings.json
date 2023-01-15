@@ -1,0 +1,12 @@
+﻿{
+  "profiles": {
+    "HubWorkerPublish": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5053;https://localhost:5054"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventStoreAPI", "EventStoreAPI.csproj", "{FBC733E1-CCBD-4BC9-A155-7FC3694B0DFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Command.Models", "..\..\Common\src\Models\Command.Models.csproj", "{88CAE0FA-7F78-4408-BBDB-2433166F8715}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{B7FB2172-72C0-4828-A1B3-7F353A05596C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBC733E1-CCBD-4BC9-A155-7FC3694B0DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC733E1-CCBD-4BC9-A155-7FC3694B0DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC733E1-CCBD-4BC9-A155-7FC3694B0DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC733E1-CCBD-4BC9-A155-7FC3694B0DFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88CAE0FA-7F78-4408-BBDB-2433166F8715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88CAE0FA-7F78-4408-BBDB-2433166F8715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88CAE0FA-7F78-4408-BBDB-2433166F8715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88CAE0FA-7F78-4408-BBDB-2433166F8715}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88CAE0FA-7F78-4408-BBDB-2433166F8715} = {B7FB2172-72C0-4828-A1B3-7F353A05596C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8AB3A4C3-E601-4471-8648-0D18EF92C840}
+	EndGlobalSection
+EndGlobal

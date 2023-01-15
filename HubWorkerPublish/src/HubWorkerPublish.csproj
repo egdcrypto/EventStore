@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>dotnet-HubWorkerPublish-7B60EAE5-4204-4D8E-B3C6-91E803317C75</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="6.0.10" />
+		<PackageReference Include="Microsoft.Azure.SignalR" Version="1.18.3" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Common\src\Models\Command.Models.csproj" />
+	</ItemGroup>
+</Project>
